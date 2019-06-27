@@ -1,6 +1,8 @@
-# Conway's Life in 241 characters of ruby.
+# Conway's Game Of Life in 224 characters of Ruby.
 
 ## Description
+
+All ruby scripts based on the code at [GitHub](https://github.com/Max1Truc/Conway-s-Game-Of-Life).
 
 The file `main.rb` processes a grid in JSON from stdin and sends the result to stdout.
 
@@ -12,6 +14,7 @@ There are some bonus files:
 
 ## Usage
 
-To use it as in the challenge rules: `cat example.grid | ruby main.rb`
+  - To use it as in the challenge rules: `cat example.grid | ruby main.rb`
 
-To beautifully run it: `./start.sh`
+  - To beautifully run it: `./start.sh [grid filename]`
+  	If a filename is given, it will be used instead of generating a random 30x30 grid

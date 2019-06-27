@@ -7,6 +7,29 @@
 # See: https://github.com/Max1Truc/Conway-s-Game-Of-Life
 #
 
+# Mainloop
+def main
+  gen = first_generation
+  loop {
+    # Render generation
+    render gen
+
+    # Next generation
+    gen = next_generation gen
+
+    sleep 0.1
+  }
+end
+
+# Generate first generation
+def first_generation
+  Array.new(30).map do
+    Array.new(30).map do
+      rand(10)==1?1:0
+    end
+  end
+end
+
 def render gen
   system "clear"
   puts "\u2554"+"\u2550"*gen.length*2+"\u2557"
@@ -29,34 +52,16 @@ def next_generation gen
       for x in -1..1
         for y in -1..1
           if !(x==0 && y==0)
-            alivecellsaround += 1 if ((gen[i+x] || [])[j+y] || 0) == 1
+            alivecellsaround += 1 if i+x >= 0 && j+y >= 0 && (gen[i+x] || [])[j+y] == 1
           end
         end
       end
 
-      if (v == 1 && ([2,3].include? alivecellsaround)) || (v == 0 && alivecellsaround == 3)
-        1
-      else
-        0
-      end
+      alivecellsaround == 3 || (v == 1 && alivecellsaround == 2)? 1 : 0
     end
   end
 end
 
-# Generate first generation
-gen = Array.new(30).map do
-  Array.new(30).map do
-    rand(10)==1?1:0
-  end
+if __FILE__ == $0
+  main
 end
-
-# Mainloop
-loop {
-  # Render generation
-  render gen
-
-  # Next generation
-  gen = next_generation gen
-
-  sleep 0.1
-}

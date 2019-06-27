@@ -10,7 +10,7 @@
 require 'json'
 
 puts(
-  JSON.pretty_generate(
+  JSON.unparse(
     Array.new(30).map do
       Array.new(30).map do
         rand(10) == 1? 1 : 0
