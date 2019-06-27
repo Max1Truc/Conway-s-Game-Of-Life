@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-
+# frozen_string_literal: true
 #
 # Conway's Game Of Life
 # Rendering file
